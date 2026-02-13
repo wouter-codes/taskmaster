@@ -1,11 +1,13 @@
 """Django settings for taskmaster project."""
 from pathlib import Path
+import os
+import dj_database_url
+if os.path.isfile('env.py'): # This file does not exist on the deployed version
+    import env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-change-me"
-
-DEBUG = False
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
 
@@ -49,12 +51,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "taskmaster.wsgi.application"
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
