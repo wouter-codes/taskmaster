@@ -3,10 +3,10 @@ crispy-bootstrap5==2025.6
 dj-database-url==3.1.0
 Django==5.2.11
 django-crispy-forms==2.5
-gunicorn==20.1.0
+gunicorn==23.0.0
 psycopg==3.3.2
 psycopg-binary==3.3.2
-setuptools==82.0.0
+setuptools==75.1.0
 sqlparse==0.5.5
 typing_extensions==4.15.0
 whitenoise==6.11.0
