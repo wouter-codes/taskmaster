@@ -1,6 +1,7 @@
 """Django settings for taskmaster project."""
 from pathlib import Path
 import os
+import sys
 import dj_database_url
 if os.path.isfile('env.py'): # This file does not exist on the deployed version
     import env
@@ -55,15 +56,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "taskmaster.wsgi.application"
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+if 'test' in sys.argv:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
 AUTH_PASSWORD_VALIDATORS = [

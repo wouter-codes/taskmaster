@@ -1,5 +1,5 @@
+from django.core.exceptions import ValidationError
 from django.db import models
-
 
 class Category(models.Model):
 	name = models.CharField(max_length=100)
@@ -25,3 +25,8 @@ class Task(models.Model):
 
 	def __str__(self) -> str:
 		return self.title
+	
+	def save(self, *args, **kwargs):
+		if len(self.title) > 100:
+			raise ValidationError("title can't be longer than 100 chars")
+		super().save(*args, **kwargs)
