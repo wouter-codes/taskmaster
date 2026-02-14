@@ -50,8 +50,8 @@
                                     <td>{{ task.title }}</td>
                                     <td>{{ task.category.name }}</td>
                                     <td>
-                                        <a href="#" class="text-success me-2"><i class="far fa-square"></i></a>
-                                        <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+                                        <a href="#" class="text-success me-2" aria-label="Mark task as complete"><i class="far fa-square"></i></a>
+                                        <a href="#" class="text-danger" aria-label="Delete task"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -84,8 +84,8 @@
                                     <td><strike>{{ task.title }}</strike></td>
                                     <td>{{ task.category.name }}</td>
                                     <td>
-                                        <a href="#" class="text-success me-2"><i class="far fa-check-square"></i></a>
-                                        <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+                                        <a href="#" class="text-success me-2" aria-label="Mark task as incomplete"><i class="far fa-check-square"></i></a>
+                                        <a href="#" class="text-danger" aria-label="Delete task"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 {% endfor %}

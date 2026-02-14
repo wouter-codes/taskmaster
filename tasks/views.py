@@ -9,7 +9,7 @@ def index(request: HttpRequest) -> HttpResponse:
     tasks_done = Task.objects.filter(completed=True).order_by("-created_at")
     
     return render(
-        request, "index.html", 
+        request, "tasks/index.html", 
         {"tasks_todo": tasks_todo,
          "tasks_done": tasks_done,
         }
