@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.http.response import HttpResponse
-from .models import Task, Category
+from .models import Task
 
 
 def index(request: HttpRequest) -> HttpResponse:
